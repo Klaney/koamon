@@ -1,0 +1,8 @@
+{
+  "name": "koa-boilerplate",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "git@github.com:Klaney/koa-boilerplate.git",
+  "author": "klaney <keatonus@gmail.com>",
+  "license": "MIT"
+}
