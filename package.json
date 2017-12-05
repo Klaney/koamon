@@ -4,5 +4,8 @@
   "main": "server.js",
   "repository": "git@github.com:Klaney/koa-boilerplate.git",
   "author": "klaney <keatonus@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.4.1"
+  }
 }
