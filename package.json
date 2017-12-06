@@ -11,11 +11,13 @@
   "devDependencies": {
     "del": "^3.0.0",
     "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.2.1",
     "gulp-typescript": "^3.2.3",
     "typescript": "^2.6.2",
     "util": "^0.10.3"
   },
   "scripts": {
+    "start": "gulp build && gulp watch && nodemon dist/api/server.js",
     "dev": "gulp clean && gulp compile",
     "clean": "gulp clean"
   }
