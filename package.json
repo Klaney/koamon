@@ -16,7 +16,7 @@
     "util": "^0.10.3"
   },
   "scripts": {
-    "dev": "gulp build",
+    "dev": "gulp clean && gulp compile",
     "clean": "gulp clean"
   }
 }

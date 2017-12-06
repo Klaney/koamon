@@ -5,20 +5,22 @@ var del = require("del");
 var util = require("util");
 
 gulp.task("clean", function(cb) {
-    return del([
-        'dist'
-    ])
-})
-
-gulp.task("compile", function (cb) {
-    return tsProject.src()
-        .pipe(tsProject())
-        .js.pipe(gulp.dest("dist"));
+  return del(["dist"]);
 });
 
-gulp.task("build", [
-    "clean",
-    "compile"
-], function() {
-    util.log('default task executed.');
-  })
+gulp.task("compile", ["clean"] ,function() {
+  return tsProject
+    .src()
+    .pipe(tsProject())
+    .js.pipe(gulp.dest("dist"));
+});
+
+var watcher = gulp.watch("src/**/*.ts", ["clean", "compile"]);
+
+watcher.on("change", function(event){
+  console.log("change detected, cleaning and recompiling to the dist folder");
+})
+
+gulp.task("build", ["clean", "compile"], function() {
+  util.log("default task executed.");
+});
