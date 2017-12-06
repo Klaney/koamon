@@ -1,26 +1,26 @@
-var gulp = require("gulp");
-var ts = require("gulp-typescript");
-var tsProject = ts.createProject("tsconfig.json");
-var del = require("del");
-var util = require("util");
+const gulp = require("gulp"),
+  ts = require("gulp-typescript"),
+  tsProject = ts.createProject("tsconfig.json"),
+  del = require("del"),
+  util = require("util");
 
-gulp.task("clean", function(cb) {
+let watcher = gulp.watch("src/**/*.ts", ["clean", "compile"]);
+
+gulp.task("clean", cb => {
   return del(["dist"]);
 });
 
-gulp.task("compile", ["clean"] ,function() {
+gulp.task("compile", ["clean"], () => {
   return tsProject
     .src()
     .pipe(tsProject())
     .js.pipe(gulp.dest("dist"));
 });
 
-var watcher = gulp.watch("src/**/*.ts", ["clean", "compile"]);
-
-watcher.on("change", function(event){
+watcher.on("change", event => {
   console.log("change detected, cleaning and recompiling to the dist folder");
-})
+});
 
-gulp.task("build", ["clean", "compile"], function() {
+gulp.task("build", ["clean", "compile"], () => {
   util.log("default task executed.");
 });
