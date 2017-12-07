@@ -6,8 +6,6 @@ const gulp = require("gulp"),
   nodemon = require("gulp-nodemon"),
   refresh = require("gulp-refresh");
 
-let watcher = gulp.watch("src/**/*.ts", ["clean", "compile"]);
-
 gulp.task("clean", cb => {
   return del(["dist"]);
 });
@@ -24,10 +22,6 @@ gulp.task("compile", ["clean"], () => {
 gulp.task("watch", () => {
   refresh.listen();
   gulp.watch("src/**/*.ts", ["clean", "compile"]);
-  // watcher.on("change", event => {
-  //   console.log("change detected, cleaning and recompiling to the dist folder");
-  //   refresh.listen();
-  // });
 })
 
 gulp.task("nodemon", ["compile"], cb => {
