@@ -13,11 +13,13 @@
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.2.1",
     "gulp-typescript": "^3.2.3",
+    "ts-loader": "^3.2.0",
     "typescript": "^2.6.2",
-    "util": "^0.10.3"
+    "util": "^0.10.3",
+    "webpack": "^3.10.0"
   },
   "scripts": {
-    "start": "gulp build && gulp watch && nodemon dist/api/server.js",
+    "start": "webpack --config webpack.config.js",
     "dev": "gulp clean && gulp compile",
     "clean": "gulp clean"
   }
