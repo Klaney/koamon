@@ -1,3 +1,3 @@
-const taco: String =  " hellhvhgvhbo moto 4"
+const taco: String =  " test reload"
 
 export { taco }
