@@ -3,7 +3,8 @@ const gulp = require("gulp"),
   tsProject = ts.createProject("tsconfig.json"),
   del = require("del"),
   util = require("util"),
-  nodemon = require("gulp-nodemon");
+  nodemon = require("gulp-nodemon"),
+  refresh = require("gulp-refresh");
 
 let watcher = gulp.watch("src/**/*.ts", ["clean", "compile"]);
 
@@ -15,13 +16,18 @@ gulp.task("compile", ["clean"], () => {
   return tsProject
     .src()
     .pipe(tsProject())
-    .js.pipe(gulp.dest("dist"));
+    .js
+    .pipe(gulp.dest("dist"))
+    .pipe(refresh());
 });
 
 gulp.task("watch", () => {
-  watcher.on("change", event => {
-    console.log("change detected, cleaning and recompiling to the dist folder");
-  });
+  refresh.listen();
+  gulp.watch("src/**/*.ts", ["clean", "compile"]);
+  // watcher.on("change", event => {
+  //   console.log("change detected, cleaning and recompiling to the dist folder");
+  //   refresh.listen();
+  // });
 })
 
 gulp.task("nodemon", ["compile"], cb => {
