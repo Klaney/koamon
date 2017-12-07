@@ -6,7 +6,11 @@
   "author": "klaney <keatonus@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "koa": "^2.4.1"
+    "@types/koa": "^2.0.42",
+    "destroy": "^1.0.4",
+    "fs": "^0.0.1-security",
+    "koa": "^2.4.1",
+    "net": "^1.0.2"
   },
   "devDependencies": {
     "del": "^3.0.0",

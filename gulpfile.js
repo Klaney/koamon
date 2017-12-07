@@ -24,7 +24,7 @@ gulp.task("watch", () => {
   });
 })
 
-gulp.task("nodemon", cb => {
+gulp.task("nodemon", ["compile"], cb => {
   nodemon({
     script: "dist/api/server.js"
   })
