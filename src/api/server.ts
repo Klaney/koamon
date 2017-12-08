@@ -7,6 +7,7 @@ const db = require('../db')
 
 app.use(async ctx => {
   const taco = await db.query()
+  console.log(taco)
   ctx.body = "hello world" + taco;
 });
 app.use(livereload(
