@@ -1,12 +1,17 @@
 import * as Koa from 'koa';
+import * as Router from 'koa-router'
 import {Db} from '../db'
 
 const livereload = require('koa-livereload')
 const app = new Koa();
+const router = new Router();
 app.context.db = new Db();
 
-app.use(async ctx => {
-  ctx.body = await ctx.db.returnFirstPerson();
+router.get('/', (ctx, next) => {
+  const person = ctx.db.returnFirstPerson();
+  ctx.body = "whatever"
 });
 
+app.use(router.routes())
+  .use(router.allowedMethods())
 app.listen(3000);

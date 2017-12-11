@@ -8,6 +8,7 @@
   "dependencies": {
     "@types/knex": "^0.0.67",
     "@types/koa": "^2.0.42",
+    "@types/koa-router": "^7.0.27",
     "@types/pg": "^7.4.1",
     "destroy": "^1.0.4",
     "fs": "^0.0.1-security",
