@@ -14,4 +14,4 @@ router.get('/', (ctx, next) => {
 
 app.use(router.routes())
   .use(router.allowedMethods())
-app.listen(3000);
+  .listen(3000);
