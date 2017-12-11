@@ -22,7 +22,6 @@
     "gulp-refresh": "^1.1.0",
     "gulp-typescript": "^3.2.3",
     "knex": "^0.14.2",
-    "koa-livereload": "^0.2.0",
     "koa-router": "^7.3.0",
     "pg": "^7.4.0",
     "ts-loader": "^3.2.0",

@@ -2,7 +2,6 @@ import * as Koa from 'koa';
 import * as Router from 'koa-router'
 import {Db} from '../db'
 
-const livereload = require('koa-livereload')
 const app = new Koa();
 const router = new Router();
 app.context.db = new Db();
