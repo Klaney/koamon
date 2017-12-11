@@ -1,20 +1,30 @@
 import {Client, Pool} from 'pg';
+import {Models} from './models'
 
-const pool = new Pool();
-
-pool.connect((err, client, release) => {
-  if (err) {
-    return console.error('Error acquiring client', err.stack)
+export class Db{
+  pool: Pool
+  models: Models
+  constructor(){
+    this.pool = new Pool()
+    this.models = new Models(this.pool)
   }
-  client.query('SELECT NOW()', (err, result) => {
-    release()
-    if (err) {
-      return console.error('Error executing query', err.stack)
-    }
-    console.log(result.rows)
-  })
-})
+  //If connection fails, add your db credentials as ENV variables
+  returnDateTimeNow(){
+    this.pool.connect((err, client, release) => {
+      if (err) {
+        return console.error('Error acquiring client', err.stack)
+      }
+      client.query('SELECT NOW()', (err, result) => {
+        release()
+        if (err) {
+          return console.error('Error executing query', err.stack)
+        }
+        console.log(result.rows)
+      })
+    })
+  }
 
-module.exports = {
-  query: (text: string, params: any) => pool.query(text, params)
+  async returnFirstPerson(){
+    await this.models.person.getFirstPerson()
+  }
 }
