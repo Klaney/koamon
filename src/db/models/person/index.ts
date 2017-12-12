@@ -11,6 +11,5 @@ export class Person {
       return result.rows[0].name;
     }
     return "no first person"
-    // err ? console.log(err) : res.rows.length > 0 ? res.rows[0].name : "no rows found";
   }
 }
