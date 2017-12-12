@@ -1,13 +1,16 @@
-import {Pool} from 'pg';
+import { Pool } from "pg";
 
-export class Person{
-  pool: Pool
-  constructor(pool: Pool){
-    this.pool = pool
+export class Person {
+  pool: Pool;
+  constructor(pool: Pool) {
+    this.pool = pool;
   }
-  getFirstPerson(){
-    this.pool.query('SELECT * from person', (err, res) => {
-      err ? console.log(err) : console.log(res.rows.length > 0 ? res.rows[0].name : console.log("no rows found"));
-    })
+  async getFirstPerson() {
+    const result = await this.pool.query("SELECT * from person");
+    if(result.rows.length > 0){
+      return result.rows[0].name;
+    }
+    return "no first person"
+    // err ? console.log(err) : res.rows.length > 0 ? res.rows[0].name : "no rows found";
   }
 }

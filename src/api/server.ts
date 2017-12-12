@@ -6,9 +6,10 @@ const app = new Koa();
 const router = new Router();
 app.context.db = new Db();
 
-router.get('/', (ctx, next) => {
-  const person = ctx.db.returnFirstPerson();
-  ctx.body = "whatever"
+router.get('/', async (ctx, next) => {
+  const person = await ctx.db.returnFirstPerson();
+  ctx.response.body = person;
+  ctx.response.status = 200;
 });
 
 app.use(router.routes())

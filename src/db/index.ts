@@ -24,7 +24,8 @@ export class Db{
     })
   }
 
-  async returnFirstPerson(){
-    await this.models.person.getFirstPerson()
+  returnFirstPerson(){
+    const firstPerson = this.models.person.getFirstPerson();
+    return firstPerson
   }
 }
