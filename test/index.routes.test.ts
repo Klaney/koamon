@@ -8,6 +8,6 @@ describe("routes: index", () => {
     const response = await request(server).get("/");
     expect(response.status).toEqual(200);
     expect(response.type).toBe("text/plain");
-    expect(response.body).toEqual({});
+    expect(response.text).toEqual("keaton");
   });
 });
