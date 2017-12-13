@@ -5,6 +5,20 @@
   "repository": "git@github.com:Klaney/koa-boilerplate.git",
   "author": "klaney <keatonus@gmail.com>",
   "license": "MIT",
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
   "dependencies": {
     "@types/knex": "^0.0.67",
     "@types/koa": "^2.0.42",
@@ -16,6 +30,8 @@
     "net": "^1.0.2"
   },
   "devDependencies": {
+    "@types/jest": "^21.1.8",
+    "@types/supertest": "^2.0.4",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.2.1",
@@ -26,6 +42,7 @@
     "koa-router": "^7.3.0",
     "pg": "^7.4.0",
     "supertest": "^3.0.0",
+    "ts-jest": "^21.2.4",
     "ts-loader": "^3.2.0",
     "typescript": "^2.6.2",
     "util": "^0.10.3",
@@ -34,6 +51,7 @@
   "scripts": {
     "start": "webpack --config webpack.config.js",
     "dev": "gulp clean && gulp compile",
-    "clean": "gulp clean"
+    "clean": "gulp clean",
+    "test": "jest"
   }
 }

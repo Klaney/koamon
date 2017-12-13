@@ -12,6 +12,8 @@ router.get('/', async (ctx, next) => {
   ctx.response.status = 200;
 });
 
-app.use(router.routes())
+const server = app.use(router.routes())
   .use(router.allowedMethods())
   .listen(3000);
+
+export {server};
