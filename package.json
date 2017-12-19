@@ -34,10 +34,13 @@
     "@types/supertest": "^2.0.4",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
+    "gulp-jest": "^3.0.1",
     "gulp-nodemon": "^2.2.1",
     "gulp-refresh": "^1.1.0",
+    "gulp-run": "^1.7.1",
     "gulp-typescript": "^3.2.3",
     "jest": "^21.2.1",
+    "jest-cli": "^21.2.1",
     "knex": "^0.14.2",
     "koa-router": "^7.3.0",
     "pg": "^7.4.0",
@@ -52,6 +55,6 @@
     "start": "webpack --config webpack.config.js",
     "dev": "gulp clean && gulp compile",
     "clean": "gulp clean",
-    "test": "jest"
+    "test": "jest --forceExit"
   }
 }

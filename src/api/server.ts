@@ -4,6 +4,7 @@ import {Db} from '../db'
 
 const app = new Koa();
 const router = new Router();
+let port = process.env.PORT || 3000;
 app.context.db = new Db();
 
 router.get('/', async (ctx, next) => {
@@ -14,6 +15,6 @@ router.get('/', async (ctx, next) => {
 
 const server = app.use(router.routes())
   .use(router.allowedMethods())
-  .listen(3000);
+  .listen(port);
 
 export {server};

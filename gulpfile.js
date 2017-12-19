@@ -4,7 +4,8 @@ const gulp = require("gulp"),
   del = require("del"),
   util = require("util"),
   nodemon = require("gulp-nodemon"),
-  refresh = require("gulp-refresh");
+  refresh = require("gulp-refresh"),
+  jest = require("gulp-jest").default;
 
 gulp.task("clean", cb => {
   return del(["dist"]);
@@ -21,7 +22,7 @@ gulp.task("compile", ["clean"], () => {
 
 gulp.task("watch", () => {
   refresh.listen();
-  gulp.watch("src/**/*.ts", ["clean", "compile"]);
+  gulp.watch(["src/**/*.ts", "test/**/*.ts"], ["clean", "compile"]);
 })
 
 gulp.task("nodemon", ["compile"], cb => {
@@ -33,3 +34,7 @@ gulp.task("nodemon", ["compile"], cb => {
 gulp.task("default", ["clean", "compile", "watch", "nodemon"], () => {
   return util.log("default task executed.");
 });
+
+gulp.task("test", ["clean", "compile", "watch"], cb => {
+  return gulp.src("./test").pipe(jest())
+})
