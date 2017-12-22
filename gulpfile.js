@@ -4,7 +4,6 @@ const gulp = require("gulp"),
   del = require("del"),
   util = require("util"),
   nodemon = require("gulp-nodemon"),
-  refresh = require("gulp-refresh"),
   jest = require("gulp-jest").default;
 
 gulp.task("clean", cb => {
@@ -16,12 +15,10 @@ gulp.task("compile", ["clean"], () => {
     .src()
     .pipe(tsProject())
     .js
-    .pipe(gulp.dest("dist"))
-    .pipe(refresh());
+    .pipe(gulp.dest("dist"));
 });
 
 gulp.task("watch", () => {
-  refresh.listen();
   gulp.watch(["src/**/*.ts", "test/**/*.ts"], ["clean", "compile"]);
 })
 

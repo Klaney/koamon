@@ -36,7 +36,6 @@
     "gulp": "^3.9.1",
     "gulp-jest": "^3.0.1",
     "gulp-nodemon": "^2.2.1",
-    "gulp-refresh": "^1.1.0",
     "gulp-run": "^1.7.1",
     "gulp-typescript": "^3.2.3",
     "jest": "^21.2.1",
