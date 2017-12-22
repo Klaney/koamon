@@ -7,7 +7,7 @@ const router = new Router();
 let port = process.env.PORT || 3001;
 app.context.db = new Db();
 
-router.get('/', async (ctx, next) => {
+router.get('/api', async (ctx, next) => {
   const person = await ctx.db.returnFirstPerson();
   ctx.response.body = person;
   ctx.response.status = 200;
