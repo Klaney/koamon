@@ -30,9 +30,11 @@
     "net": "^1.0.2"
   },
   "devDependencies": {
+    "@types/dotenv": "^4.0.2",
     "@types/jest": "^21.1.8",
     "@types/supertest": "^2.0.4",
     "del": "^3.0.0",
+    "dotenv": "^4.0.0",
     "gulp": "^3.9.1",
     "gulp-jest": "^3.0.1",
     "gulp-nodemon": "^2.2.1",

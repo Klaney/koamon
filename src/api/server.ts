@@ -1,11 +1,13 @@
-import * as Koa from 'koa';
+import * as Koa from 'koa'
 import * as Router from 'koa-router'
+import * as dotenv from 'dotenv'
 import {Db} from '../db'
 
 const app = new Koa();
 const router = new Router();
 let port = process.env.PORT || 3001;
 app.context.db = new Db();
+dotenv.config();
 
 router.get('/api', async (ctx, next) => {
   const person = await ctx.db.returnFirstPerson();

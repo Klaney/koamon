@@ -4,15 +4,19 @@ module.exports = {
 
   development: {
     client: 'postgresql',
-    connection: 'postgres://keatonus@localhost/keaton-laney'
+    connection: {
+      database: process.env.DATABASE_NAME,
+      user:     process.env.USER,
+      password: process.env.PASSWORD || null
+    }
   },
 
   staging: {
     client: 'postgresql',
     connection: {
-      database: 'keaton-laney',
+      database: process.env.DATABASE_NAME,
       user:     process.env.USER,
-      password: null
+      password: process.env.PASSWORD || null
     },
     pool: {
       min: 2,
