@@ -2,10 +2,11 @@ import * as Koa from 'koa'
 import * as Router from 'koa-router'
 import * as dotenv from 'dotenv'
 import {Db} from '../db'
+import {ConfigServer} from './serverConfig'
+
 
 const app = new Koa();
 const router = new Router();
-let port = process.env.PORT || 3001;
 app.context.db = new Db();
 dotenv.config();
 
@@ -17,6 +18,6 @@ router.get('/api', async (ctx, next) => {
 
 const server = app.use(router.routes())
   .use(router.allowedMethods())
-  .listen(port);
+  .listen(3001)
 
 export {server};
