@@ -1,2 +1,7 @@
-import * as kRouter from 'koa-router'
-import {router} from './authentication/index'
+import * as Router from 'koa-router'
+import {Request} from 'koa';
+import {AuthRoutes} from './authentication/index'
+
+const Routes = [AuthRoutes]
+
+export {Routes}
