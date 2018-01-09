@@ -9,7 +9,11 @@ const router = new Router({
 });
 
 router.post('/signup', bodyParser(), (ctx: IKoaRequestWithBody) => {
-  Signup(ctx.request)
+  Signup(ctx)
+  ctx.status = 200;
+    ctx.body = {
+      message: "Successfully logged in!"
+    };
 })
 
 router.post('/login', bodyParser(), (ctx: IKoaRequestWithBody) => {

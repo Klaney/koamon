@@ -6,7 +6,8 @@ export class User {
     this.pool = pool;
   }
   async userExists(username: string) {
-    const result = await this.pool.query("SELECT * FROM user WHERE username=" + username);
+    const result = await this.pool.query(`SELECT username FROM account WHERE username='${username}'`)
+    console.log(result.rows.length)
     if(result.rows.length > 0){
       return true
     }

@@ -1,9 +1,17 @@
 import * as jwt from 'koa-jwt'
 import * as Router from 'koa-router'
-import {Request} from 'koa';
+import {Request} from 'koa'
+import {Db} from '../../../db'
 
-function Signup(ctx: Router.IRouterContext){
-  const userExists = ctx.db.
+const db = new Db();
+
+async function Signup(ctx: Router.IRouterContext){
+  if(await db.models.user.userExists(ctx.request.body.username)){
+    //create user and login
+    return "you exist"
+  }
+  return 'you dont exist'
+  //login
 }
 
 function Authenticate(ctx: Router.IRouterContext) {
@@ -23,4 +31,4 @@ function Authenticate(ctx: Router.IRouterContext) {
 }
 
 
-export {Authenticate}
+export {Authenticate, Signup}
