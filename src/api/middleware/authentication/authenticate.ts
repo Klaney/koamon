@@ -1,7 +1,12 @@
 import * as jwt from 'koa-jwt'
 import * as Router from 'koa-router'
+import {Request} from 'koa';
 
-export function Authenticate(ctx: Router.IRouterContext) {
+function Signup(ctx: Router.IRouterContext){
+  const userExists = ctx.db.
+}
+
+function Authenticate(ctx: Router.IRouterContext) {
   if (ctx.request.body.password === 'password') { //fix this to actually authenticate against a users id
     ctx.status = 200;
     ctx.body = {
@@ -16,3 +21,6 @@ export function Authenticate(ctx: Router.IRouterContext) {
   }
   return ctx;
 }
+
+
+export {Authenticate}

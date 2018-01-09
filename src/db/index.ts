@@ -7,6 +7,7 @@ export class Db{
   constructor(){
     this.pool = new Pool()
     this.models = new Models(this.pool)
+    
   }
   //If connection fails, add your db credentials as ENV variables
   returnDateTimeNow(){

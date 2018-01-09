@@ -2,18 +2,17 @@ import * as Router from 'koa-router'
 import * as jwt from '../../middleware/authentication/jwt'
 import * as bodyParser from 'koa-bodyparser'
 import {Request} from 'koa';
-import {Authenticate} from '../../middleware/authentication/authenticate'
+import {Authenticate, Signup} from '../../middleware/authentication/authenticate'
 
 const router = new Router({
   prefix: '/auth'
 });
 
-router.post('/signup', bodyParser(), (ctx) => {
-
+router.post('/signup', bodyParser(), (ctx: IKoaRequestWithBody) => {
+  Signup(ctx.request)
 })
 
 router.post('/login', bodyParser(), (ctx: IKoaRequestWithBody) => {
-  console.log(ctx.request.body)
   Authenticate(ctx)
 })
 
