@@ -1,9 +1,9 @@
-import { Pool } from "pg";
+import { Pool } from "pg"
 
 export class User {
-  pool: Pool;
+  pool: Pool
   constructor(pool: Pool) {
-    this.pool = pool;
+    this.pool = pool
   }
   async userExists(username: string) {
     const result = await this.pool.query(`SELECT username FROM account WHERE username='${username}'`)

@@ -20,7 +20,7 @@
     ]
   },
   "dependencies": {
-    "@types/knex": "^0.0.67",
+    "@types/knex": "^0.14.0",
     "@types/koa": "^2.0.42",
     "@types/koa-router": "^7.0.27",
     "@types/pg": "^7.4.1",
