@@ -1,27 +1,42 @@
-import {Client, Pool} from 'pg';
+import {Client, Pool} from 'pg'
 import {Models} from './models'
+import * as knex from 'knex'
 
 export class Db{
-  pool: Pool
+  knex: knex
   models: Models
   constructor(){
-    this.pool = new Pool()
-    this.models = new Models(this.pool)
+    this.knex = knex({
+      client: 'pg',
+      connection: {
+        host : process.env.HOST,
+        user : process.env.DB_USER,
+        database: process.env.DB_NAME
+      },
+      pool: {
+        afterCreate: function (conn: any, done: any) {
+          // in this example we use pg driver's connection API
+          conn.query('SET timezone="UTC";', function (err: any) {
+            if (err) {
+              // first query failed, return error and don't try to make next query
+              done(err, conn);
+            } else {
+              // do the second query...
+              conn.query('SELECT * from person;', function (err: any) {
+                // if err is not falsy, connection is discarded from pool
+                // if connection aquire was triggered by a query the error is passed to query promise
+                done(err, conn);
+              });
+            }
+          });
+        }
+      }
+    })
+    this.models = new Models(this.knex)
   }
   //If connection fails, add your db credentials as ENV variables
-  returnDateTimeNow(){
-    this.pool.connect((err, client, release) => {
-      if (err) {
-        return console.error('Error acquiring client', err.stack)
-      }
-      client.query('SELECT NOW()', (err, result) => {
-        release()
-        if (err) {
-          return console.error('Error executing query', err.stack)
-        }
-        console.log(result.rows)
-      })
-    })
+  checkConnection(){
+    // knex.Client()
   }
   returnFirstPerson(){
     const firstPerson = this.models.person.getFirstPerson();

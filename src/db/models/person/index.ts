@@ -1,14 +1,15 @@
-import { Pool } from "pg";
+import { Pool } from "pg"
+import * as knex from 'knex'
 
 export class Person {
-  pool: Pool;
-  constructor(pool: Pool) {
-    this.pool = pool;
+  knex: knex;
+  constructor(knex: knex) {
+    this.knex = knex;
   }
   async getFirstPerson() {
-    const result = await this.pool.query("SELECT * from person");
-    if(result.rows.length > 0){
-      return result.rows[0].name;
+    const result = await this.knex.select().from("person").first();
+    if(result){
+      return result.name;
     }
     return "no first person"
   }

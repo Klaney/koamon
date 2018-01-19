@@ -31,11 +31,13 @@
     "net": "^1.0.2"
   },
   "devDependencies": {
+    "@types/bcrypt": "^1.0.0",
     "@types/dotenv": "^4.0.2",
     "@types/jest": "^21.1.8",
     "@types/koa-bodyparser": "^3.0.26",
     "@types/koa-jwt": "^3.3.0",
     "@types/supertest": "^2.0.4",
+    "bcrypt": "^1.0.3",
     "del": "^3.0.0",
     "dotenv": "^4.0.0",
     "gulp": "^3.9.1",
