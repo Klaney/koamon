@@ -1,20 +1,19 @@
-import { Pool } from "pg"
-import * as knex from "knex"
-import * as bcrypt from "bcrypt"
-import * as dotenv from "dotenv"
+import { Pool } from "pg";
+import * as knex from "knex";
+import * as bcrypt from "bcrypt";
+import * as dotenv from "dotenv";
 
-dotenv.config()
+dotenv.config();
 
 export class User {
-  knex: knex
-  taco: knex
+  knex: knex;
+  taco: knex;
   constructor(knex: knex) {
-    this.knex = knex
-  } 
+    this.knex = knex;
+  }
 
-  async createUser(username:string, password: string){
-    let pwHash = bcrypt.hashSync(password, 10)
-    
+  async createUser(username: string, password: string) {
+    let pwHash = bcrypt.hashSync(password, 10);
   }
 
   async userExists(username: string) {
