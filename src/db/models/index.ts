@@ -1,13 +1,13 @@
 import { Pool } from "pg";
-import { Person } from "./person";
+import { Pokemon } from "./pokemon";
 import { User } from "./user";
 import * as knex from "knex";
 
 export class Models {
-  person: Person;
+  pokemon: Pokemon;
   user: User;
   constructor(pool: knex) {
-    this.person = new Person(pool);
+    this.pokemon = new Pokemon(pool);
     this.user = new User(pool);
   }
 }
