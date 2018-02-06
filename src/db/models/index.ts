@@ -1,13 +1,13 @@
 import { Pool } from "pg";
-import { Person } from "./person";
+import { Team } from "./team";
 import { User } from "./user";
 import * as knex from "knex";
 
 export class Models {
-  person: Person;
+  team: Team;
   user: User;
   constructor(pool: knex) {
-    this.person = new Person(pool);
+    this.team = new Team(pool);
     this.user = new User(pool);
   }
 }
