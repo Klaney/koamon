@@ -20,6 +20,7 @@
     ]
   },
   "dependencies": {
+    "@types/isomorphic-fetch": "^0.0.34",
     "@types/knex": "^0.14.0",
     "@types/koa": "^2.0.42",
     "@types/koa-router": "^7.0.27",
@@ -28,10 +29,12 @@
     "cosmiconfig": "^4.0.0",
     "destroy": "^1.0.4",
     "fs": "^0.0.1-security",
+    "isomorphic-fetch": "^2.2.1",
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",
     "net": "^1.0.2",
     "next": "^4.2.3",
+    "pokeapi-js-wrapper": "^1.1.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
