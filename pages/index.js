@@ -31,7 +31,14 @@ class Page extends React.Component {
     return (
       <div>
         <h1>hello world</h1>
-        <pre>{JSON.stringify(this.state.pokemon.name, null, 2)}</pre>
+        <pre className="pokemonName">
+          <style jsx>{`
+            .pokemonName {
+              border: 2px solid red;
+            }
+          `}</style>
+          {JSON.stringify(this.state.pokemon.name, null, 2)}
+        </pre>
       </div>
     );
   }
