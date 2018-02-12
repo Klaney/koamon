@@ -20,6 +20,7 @@
     ]
   },
   "dependencies": {
+    "@koa/cors": "2",
     "@types/isomorphic-fetch": "^0.0.34",
     "@types/knex": "^0.14.0",
     "@types/koa": "^2.0.42",
@@ -35,6 +36,7 @@
     "net": "^1.0.2",
     "next": "^4.2.3",
     "pokeapi-js-wrapper": "^1.1.1",
+    "pokedex-promise-v2": "^3.1.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },

@@ -8,6 +8,8 @@ import { Db } from "../db";
 import { ConfigServer } from "./serverConfig";
 import { Routes } from "./routes";
 
+const cors = require("@koa/cors");
+
 const app = new Koa();
 const router = new Router();
 const n = next({ dev: true });
@@ -26,6 +28,7 @@ Routes.forEach(route => {
 });
 
 const server = app
+  .use(cors())
   .use(router.routes())
   .use(router.allowedMethods())
   .listen(3001);

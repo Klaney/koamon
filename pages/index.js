@@ -1,13 +1,12 @@
 let f = require("isomorphic-fetch");
 let P = require("pokeapi-js-wrapper");
-// let Pokedex = new P.Pokedex();
 let myInit = {
   method: "GET",
   cache: "default"
 };
 
-async function getPokemon(name) {
-  const response = await f("http://pokeapi.co/api/v2/pokemon/1", myInit);
+async function getPokemon(apiServer, pokedexNumber) {
+  const response = await fetch(`${apiServer}/pokeapi/pokemon/${pokedexNumber}`);
   const body = await response.json();
   // console.log(body);
   return body;
@@ -18,13 +17,13 @@ class Page extends React.Component {
     super(props);
     this.state = { pokemon: {} };
   }
+  static async getInitialProps({ req }) {
+    const apiServer = "http://localhost:3001";
+    return { apiServer };
+  }
+
   async componentDidMount() {
-    const response = await fetch(
-      "https://cors.now.sh/https://pokeapi.co/api/v2/pokemon/1",
-      myInit
-    );
-    console.log(response);
-    const body = await response.json();
+    const body = await getPokemon(this.props.apiServer, 1);
     this.setState({ pokemon: body });
   }
   render() {
