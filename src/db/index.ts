@@ -39,7 +39,7 @@ export class Db {
     // knex.Client()
   }
   getTeam(id: number) {
-    const team = this.models.team.getTeam(2);
+    const team = this.models.team.getTeam(id);
     return team;
   }
 }

@@ -11,7 +11,7 @@ export class Team {
 
   async getTeam(id: number) {
     const result = await this.knex(team).where("id", id);
-    return result ? result : "no team";
+    return result ? result : null;
   }
 
   async userExists(username: string) {
