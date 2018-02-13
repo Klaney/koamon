@@ -1,5 +1,4 @@
 let f = require("isomorphic-fetch");
-let P = require("pokeapi-js-wrapper");
 let myInit = {
   method: "GET",
   cache: "default"

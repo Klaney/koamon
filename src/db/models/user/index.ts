@@ -17,11 +17,11 @@ export class User {
   }
 
   async userExists(username: string) {
-    // const result = await this.knex.query(`SELECT username FROM users WHERE username='${username}'`)
-    // console.log(result.rows.length)
-    // if(result.rows.length > 0){
-    //   return true
-    // }
-    // return false
+    const result = await this.knex("users").where({ username: username });
+    console.log(result.rows.length);
+    if (result.rows.length > 0) {
+      return true;
+    }
+    return false;
   }
 }

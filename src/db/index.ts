@@ -42,4 +42,8 @@ export class Db {
     const team = this.models.team.getTeam(id);
     return team;
   }
+  createTeam(name: string, pokemon?: [number]) {
+    const team = this.models.team.createTeam(name, pokemon ? pokemon : null);
+    return team;
+  }
 }

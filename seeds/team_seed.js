@@ -11,7 +11,10 @@ exports.seed = function(knex, Promise) {
             .toISOString()
             .slice(0, 19)
             .replace("T", " "),
-          name: "taco"
+          name: "taco",
+          user_id: knex("users")
+            .where({ id: 1 })
+            .select("id")
         }
       ]);
     });

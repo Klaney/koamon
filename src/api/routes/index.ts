@@ -1,9 +1,10 @@
 import * as Router from "koa-router";
 import { Request } from "koa";
-import { AuthRoutes } from "./authentication/index";
-import { ScriptRoutes } from "./script/index";
-import { PokeapiRoutes } from "./pokeapi/index";
+import { AuthRoutes } from "./authentication";
+import { ScriptRoutes } from "./script";
+import { PokeapiRoutes } from "./pokeapi";
+import { TeamRoutes } from "./team";
 
-const Routes = [AuthRoutes, ScriptRoutes, PokeapiRoutes];
+const Routes = [AuthRoutes, ScriptRoutes, PokeapiRoutes, TeamRoutes];
 
 export { Routes };
