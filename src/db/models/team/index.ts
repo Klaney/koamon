@@ -10,7 +10,7 @@ export class Team {
   }
 
   async getTeam(id: number) {
-    const result = await this.knex(team).where("id", id);
+    const result = await this.knex(team).where("team_id", id);
     return result ? result : null;
   }
 
@@ -19,15 +19,17 @@ export class Team {
     if (!name) {
       result = "please enter a name";
     } else {
-      result = await this.knex(team).insert({
-        createdAt: new Date()
-          .toISOString()
-          .slice(0, 19)
-          .replace("T", " "),
-        name: name || "",
-        pokemon: pokemon ? pokemon : null,
-        user_id: 1
-      });
+      result = await this.knex(team)
+        .insert({
+          createdAt: new Date()
+            .toISOString()
+            .slice(0, 19)
+            .replace("T", " "),
+          name: name || "",
+          pokemon: pokemon ? pokemon : null,
+          trainer: 1
+        })
+        .returning("*");
     }
     return result;
   }

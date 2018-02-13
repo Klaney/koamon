@@ -6,7 +6,6 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex("users").insert([
         {
-          id: 1,
           createdAt: new Date()
             .toISOString()
             .slice(0, 19)
