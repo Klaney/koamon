@@ -1,32 +1,38 @@
-import * as Router from 'koa-router'
-import * as jwt from '../../middleware/authentication/jwt'
-import * as bodyParser from 'koa-bodyparser'
-import {Request} from 'koa';
-import {Authenticate, Signup} from '../../middleware/authentication/authenticate'
+import * as Router from "koa-router";
+import * as jwt from "../../middleware/authentication/jwt";
+import * as bodyParser from "koa-bodyparser";
+import { IKoaRequestWithBody } from "../../interfaces/KoaRequestExtender";
+import { Request } from "koa";
+import {
+  Authenticate,
+  Signup
+} from "../../middleware/authentication/authenticate";
+
+import Login from "../../middleware/authentication/login";
 
 const router = new Router({
-  prefix: '/auth'
+  prefix: "/auth"
 });
 
-router.post('/signup', bodyParser(), (ctx: IKoaRequestWithBody) => {
-  Signup(ctx)
-  ctx.status = 200;
-    ctx.body = {
-      message: "Successfully logged in!"
-    };
-})
+router.use(async (ctx, next) => {
+  try {
+    await next();
+  } catch (err) {
+    ctx.status = 400;
+    ctx.body = `Uh-oh: ${err.message}`;
+    console.log("Error handler:", err.message);
+  }
+});
 
-router.post('/login', bodyParser(), (ctx: IKoaRequestWithBody) => {
-  Authenticate(ctx)
-})
+router.post("/signup", bodyParser(), Signup, (ctx: IKoaRequestWithBody) => {
+  console.log("signup route hit");
+  ctx.body = ctx.user ? "Successfully created" : "not created";
+});
 
-interface IKoaRequestWithBody extends Router.IRouterContext {
-  request: IKoaBodyParserRequest;
-}
+router.post("/login", bodyParser(), Login, (ctx: IKoaRequestWithBody) => {
+  console.log(ctx.user);
+});
 
-interface IKoaBodyParserRequest extends Request {
-  body: any;
-}
 const AuthRoutes = router;
 
-export {AuthRoutes}
+export { AuthRoutes };

@@ -1,4 +1,5 @@
 import { Pool } from "pg";
+import { newDate } from "../../services/SqlDateCreator";
 import * as knex from "knex";
 import * as bcrypt from "bcrypt";
 import * as dotenv from "dotenv";
@@ -13,14 +14,19 @@ export class User {
   }
 
   async createUser(username: string, password: string) {
-    let pwHash = bcrypt.hashSync(password, 10);
+    let pwHash = bcrypt.hash(password, 10);
+    this.knex("users").insert({
+      username: username,
+      password: pwHash,
+      createdAt: newDate()
+    });
   }
 
   async userExists(username: string) {
+    if (!username) return false;
     const result = await this.knex("users").where({ username: username });
-    console.log(result.rows.length);
-    if (result.rows.length > 0) {
-      return true;
+    if (result.length > 0) {
+      return result[0];
     }
     return false;
   }

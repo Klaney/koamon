@@ -20,18 +20,3 @@ async function Signup(ctx: Router.IRouterContext, next: any) {
     ctx.user = null;
   }
 }
-
-function Authenticate(ctx: Router.IRouterContext) {
-  if (ctx.request.body.password === "password") {
-    //fix this to actually authenticate against a users id
-    ctx.status = 200;
-    ctx.body = {
-      token: jwt({ secret: process.env.SECRET_TOKEN_MESSAGE }),
-      message: "Successfully logged in!"
-    };
-  } else {
-    throw new Error("Could not authenticate");
-  }
-}
-
-export { Authenticate, Signup };
