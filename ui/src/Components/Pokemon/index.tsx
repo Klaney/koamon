@@ -1,18 +1,13 @@
 import * as React from "react";
+import getPokemon from "./utils/GetPokemon";
+import { Pokemon } from "./types/Pokemon";
 
 const apiUrl = "http://localhost:3001";
-
-async function getPokemon(apiServer: string, pokedexNumber: number) {
-  const response = await fetch(`${apiServer}/pokeapi/pokemon/${pokedexNumber}`);
-  const body = await response.json();
-  // console.log(body);
-  return body;
-}
 
 class RenderSinglePokemon extends React.Component<{}, { pokemon: Pokemon }> {
   constructor(props: object) {
     super(props);
-    this.state = { pokemon: { name: "taco" } };
+    this.state = { pokemon: { name: "" } };
   }
   async componentDidMount() {
     const body = await getPokemon(apiUrl, 1);
@@ -28,13 +23,11 @@ class RenderSinglePokemon extends React.Component<{}, { pokemon: Pokemon }> {
               border: 2px solid red;
             }
           `}</style>
-          {JSON.stringify(this.state.pokemon.name, null, 2)}
+          {this.state.pokemon.name}
         </pre>
       </div>
     );
   }
 }
-type Pokemon = {
-  name: string;
-};
+
 export default RenderSinglePokemon;
