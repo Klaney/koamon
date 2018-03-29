@@ -33,13 +33,4 @@ export class Team {
     }
     return result;
   }
-
-  async userExists(username: string) {
-    // const result = await this.knex.query(`SELECT username FROM users WHERE username='${username}'`)
-    // console.log(result.rows.length)
-    // if(result.rows.length > 0){
-    //   return true
-    // }
-    // return false
-  }
 }
