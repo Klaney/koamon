@@ -11,6 +11,7 @@ exports.seed = function(knex, Promise) {
             .slice(0, 19)
             .replace("T", " "),
           name: "taco",
+          pokemon: [1, 2, 3, 4, 5, 6],
           trainer: 1
         }
       ]);

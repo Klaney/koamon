@@ -7,7 +7,16 @@ const router = new Router({
   prefix: "/team"
 });
 
-router.get("/pokemon/:pokedexNum", async ctx => {});
+router.get("/:teamId/pokemon", async ctx => {
+  ctx.set("Access-Control-Allow-Origin", "http://localhost:3000");
+  const result = await ctx.db.models.team.getPokemon(ctx.params.teamId);
+  if (!result) {
+    ctx.status = 404;
+  } else {
+    ctx.status = 200;
+    ctx.body = result;
+  }
+});
 
 router.post("/", bodyParser(), async (ctx: IKoaRequestWithBody) => {
   const result = await ctx.db.models.team.createTeam(ctx.request.body.name);

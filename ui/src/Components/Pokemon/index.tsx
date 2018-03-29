@@ -1,8 +1,6 @@
 import * as React from "react";
-import getPokemon from "./utils/GetPokemon";
-import { Pokemon } from "./types/Pokemon";
-
-const apiUrl = "http://localhost:3001";
+import getPokemon from "../../utils/GetPokemon";
+import { Pokemon } from "../../types/Pokemon";
 
 class RenderSinglePokemon extends React.Component<{}, { pokemon: Pokemon }> {
   constructor(props: object) {
@@ -10,21 +8,19 @@ class RenderSinglePokemon extends React.Component<{}, { pokemon: Pokemon }> {
     this.state = { pokemon: { name: "" } };
   }
   async componentDidMount() {
-    const body = await getPokemon(apiUrl, 1);
+    const body = await getPokemon(1);
     this.setState({ pokemon: body });
   }
   render() {
     return (
       <div>
         <h1>hello world</h1>
-        <pre className="pokemonName">
-          <style>{`
+        <pre className="pokemonName">{this.state.pokemon.name}</pre>
+        <style>{`
             .pokemonName {
               border: 2px solid red;
             }
           `}</style>
-          {this.state.pokemon.name}
-        </pre>
       </div>
     );
   }
