@@ -34,12 +34,15 @@ export class Team {
     return result;
   }
 
-  async userExists(username: string) {
-    // const result = await this.knex.query(`SELECT username FROM users WHERE username='${username}'`)
-    // console.log(result.rows.length)
-    // if(result.rows.length > 0){
-    //   return true
-    // }
-    // return false
+  async getPokemon(id: number) {
+    let result;
+    if (!id) {
+      result = "invalid id";
+    } else {
+      result = await this.knex(team)
+        .where({ team_id: id })
+        .select("pokemon");
+    }
+    return result[0].pokemon;
   }
 }

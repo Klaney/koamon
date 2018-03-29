@@ -1,15 +1,16 @@
 import * as React from "react";
-import "./App.css";
-import Header from "../Components/Layout/Header";
-import RenderSinglePokemon from "../Components/Pokemon/index";
 import { Pokemon } from "../types/Pokemon";
 import getPokemonInTeam from "../utils/GetPokemonInTeam";
+import Team from "../Components/Team";
 
 class TeamPage extends React.Component<
   { teamId: number },
   { pokemon: Array<Pokemon> }
 > {
-  // create array of pokemon, pass it as props to team
+  constructor(props: { teamId: number }) {
+    super(props);
+    this.state = { pokemon: [] };
+  }
   async componentWillMount() {
     let pokemon = await getPokemonInTeam(this.props.teamId);
     let pokeList: Pokemon[] = await pokemon;
@@ -17,9 +18,8 @@ class TeamPage extends React.Component<
   }
   render() {
     return (
-      <div className="App">
-        <Header />
-        <RenderSinglePokemon />
+      <div className="TeamPage">
+        <Team team={[...this.state.pokemon]} />
       </div>
     );
   }
