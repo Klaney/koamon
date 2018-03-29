@@ -33,8 +33,6 @@ export class Team {
     }
     return result;
   }
-<<<<<<< HEAD
-=======
 
   async getPokemon(id: number) {
     let result;
@@ -47,5 +45,4 @@ export class Team {
     }
     return result[0].pokemon;
   }
->>>>>>> 3e4a3213e402fe1749df4756bd0ed2734ba49d90
 }
