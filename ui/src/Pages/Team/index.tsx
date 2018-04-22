@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Pokemon } from "../types/Pokemon";
-import getPokemonInTeam from "../utils/GetPokemonInTeam";
-import Team from "../Components/Team";
+import { Pokemon } from "../../types/Pokemon";
+import getPokemonInTeam from "../../utils/GetPokemonInTeam";
+import Team from "../../Components/Team";
 
 class TeamPage extends React.Component<
   { teamId: number },

@@ -2,7 +2,7 @@ import * as React from "react";
 import "./App.css";
 import Header from "./Components/Layout/Header";
 import RenderSinglePokemon from "./Components/Pokemon/index";
-import TeamPage from "./Pages/TeamPage";
+import TeamPage from "./Pages/Team";
 
 class App extends React.Component {
   render() {

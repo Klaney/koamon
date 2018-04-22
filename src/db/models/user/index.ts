@@ -8,7 +8,6 @@ dotenv.config();
 
 export class User {
   knex: knex;
-  taco: knex;
   constructor(knex: knex) {
     this.knex = knex;
   }
@@ -20,6 +19,11 @@ export class User {
       password: pwHash,
       createdAt: newDate()
     });
+  }
+
+  async getUser(username: string) {
+    const result = await this.knex("users").where({ username: username });
+    return result;
   }
 
   async userExists(username: string) {
